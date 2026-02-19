@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  height: 64px;
+  background-color: #121212;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  color: #d41484;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 32px;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  box-shadow: inset 0 0 0 0 #000000;
+  padding: 0 .25rem;
+  border-radius: 8px;
+}
+
+.logo a:hover {
+  color: #ffffff;
+  box-shadow: inset 200px 0 0 0 #d41484;;
+  border-radius: 8px;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li {
+  margin-right: 20px;
+}
+
+.navLinks a {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.navLinks a:hover {
+  color: #ffffff;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.searchContainer {
+  position: relative;
+  margin-right: 16px;
+}
+
+.searchIcon {
+  font-size: 15px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.searchIcon:hover {
+  color: #d41484;
+}
+
+.searchBar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  padding: 6px 10px;
+  opacity: 0;
+  border-radius: 4px;
+  border: none;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  font-size: 14px;
+}
+
+.searchBar.active {
+  width: 180px;
+  opacity: 1;
+  padding: 6px 10px;
+}
+
+.accountButton {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d41484;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.accountButton:hover {
+  opacity: 0.9;
+}
