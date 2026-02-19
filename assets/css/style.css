@@ -22,21 +22,17 @@ body {
 }
 
 .logo a {
-  color: #d41484;
+  color: #000000;
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   margin-right: 32px;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-  box-shadow: inset 0 0 0 0 #000000;
   padding: 0 .25rem;
   border-radius: 8px;
 }
 
 .logo a:hover {
-  color: #ffffff;
-  box-shadow: inset 200px 0 0 0 #d41484;;
-  border-radius: 8px;
+  color: #5e99c9;
 }
 
 .navLinks {
