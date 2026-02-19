@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="../../index.html">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../cart/index.html">Cart</a></li>
+      </ul>
+      <li style="list-style: none; margin-right: 20px;">
+        <a href="./login.html">Sign In</a>
+      </li>
+      <button class="accountButton" onclick="window.location.href='signup.html'">
+        Sign Up
+      </button>
+    </div>
+  </nav>
+
+  <!-- LOGIN SECTION -->
+  <section class="authSection">
+    <div class="authContainer">
+      <h2>Welcome Back</h2>
+      <p>Please sign in to your account</p>
+
+      <form>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+
+        <button type="submit" class="authButton">Login</button>
+      </form>
+
+      <p class="authSwitch">
+        Don't have an account?
+        <a href="signup.html">Sign Up</a>
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
