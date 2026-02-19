@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="./index.html">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./shop/index.html">Shop</a></li>
+        <li><a href="#">Cart</a></li>
+      </ul>
+      <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
+      <li style="list-style: none; margin-right: 20px;"><a href="#">Sign In</a></li>
+      <button class="accountButton">Sign Up</button>
+    </div>
+  </nav>
+
+  <!-- Categories Section -->
+  <section class="categoriesSection">
+    <div class="categoriesContainer">
+      <a href="#" class="categoryLink" data-category="inSeason">In Season</a>
+      <a href="#" class="categoryLink" data-category="onSale">On Sale</a>
+      <a href="#" class="categoryLink" data-category="featured">Featured</a>
+      <a href="#" class="categoryLink" data-category="teens">Teens</a>
+      <a href="#" class="categoryLink" data-category="adults">Adults</a>
+      <a href="#" class="categoryLink" data-category="partner">Partner Merchandise</a>
+    </div>
+  </section>
+
+  <!-- Products Container -->
+  <section class="productsContainer">
+    <!-- In Season -->
+    <div class="categoryContent" id="inSeason">
+      <h2>In Season</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Midnight Winter Jacket</h3>
+          <p class="productPrice">$34.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Raven Thermal Hoodie</h3>
+          <p class="productPrice">$44.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Graveyard Wool Sweater</h3>
+          <p class="productPrice">$54.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Shadowfall Fleece Pants</h3>
+          <p class="productPrice">$39.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Obsidian Beanie Hat</h3>
+          <p class="productPrice">$49.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Nightshade Winter Scarf</h3>
+          <p class="productPrice">$59.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- On Sale -->
+    <div class="categoryContent" id="onSale" style="display: none;">
+      <h2>On Sale</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Cursed Vintage T Shirt</h3>
+          <p class="productPrice">$19.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Phantom Denim Jacket</h3>
+          <p class="productPrice">$24.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Hellfire Cargo Pants</h3>
+          <p class="productPrice">$29.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Eclipse Graphic Hoodie</h3>
+          <p class="productPrice">$34.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Void Joggers</h3>
+          <p class="productPrice">$39.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Noir Crop Top</h3>
+          <p class="productPrice">$44.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <div class="categoryContent" id="featured" style="display: none;">
+      <h2>Featured</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Gothic Leather Jacket</h3>
+          <p class="productPrice">$49.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Darkside Designer Jeans</h3>
+          <p class="productPrice">$59.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Moonlit Silk Blouse</h3>
+          <p class="productPrice">$69.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Graveyard Cardigan</h3>
+          <p class="productPrice">$54.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Nocturnal Wool Coat</h3>
+          <p class="productPrice">$64.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Eternal Dress Pants</h3>
+          <p class="productPrice">$74.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teens -->
+    <div class="categoryContent" id="teens" style="display: none;">
+      <h2>Teens</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Haunted Oversized Hoodie</h3>
+          <p class="productPrice">$24.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Reaper Ripped Jeans</h3>
+          <p class="productPrice">$29.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Witchy Crop Tank Top</h3>
+          <p class="productPrice">$34.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Hellish Streetwear Jacket</h3>
+          <p class="productPrice">$39.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Spectral Sweatpants</h3>
+          <p class="productPrice">$44.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Hellfire Graphic T Shirt</h3>
+          <p class="productPrice">$49.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adults -->
+    <div class="categoryContent" id="adults" style="display: none;">
+      <h2>Adults</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Elegant Business Blazer</h3>
+          <p class="productPrice">$44.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Shadowed Oxford Shirt</h3>
+          <p class="productPrice">$54.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Blackened Chinos</h3>
+          <p class="productPrice">$64.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Twilight Polo Shirt</h3>
+          <p class="productPrice">$49.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Graveyard Cardigan</h3>
+          <p class="productPrice">$59.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Mystique Casual Loafers</h3>
+          <p class="productPrice">$69.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner Merchandise -->
+    <div class="categoryContent" id="partner" style="display: none;">
+      <h2>Partner Merchandise</h2>
+      <div class="productsSection">
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Paramore T Shirt</h3>
+          <p class="productPrice">$39.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>My Chemical Romance Hoodie</h3>
+          <p class="productPrice">$49.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Panic! At The Disco Cap</h3>
+          <p class="productPrice">$59.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Fall Out Boy Sweater</h3>
+          <p class="productPrice">$44.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>The Killers Jacket</h3>
+          <p class="productPrice">$54.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+        <div class="productCard">
+          <div class="productImage"></div>
+          <h3>Imagine Dragons Beanie</h3>
+          <p class="productPrice">$64.99</p>
+          <button class="productButton">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../assets/js/script.js"></script>
+  <script>
+    // Category switching functionality
+    document.querySelectorAll('.categoryLink').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.dataset.category;
+        
+        // Hide all categories
+        document.querySelectorAll('.categoryContent').forEach(content => {
+          content.style.display = 'none';
+        });
+        
+        // Show selected category
+        document.getElementById(category).style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

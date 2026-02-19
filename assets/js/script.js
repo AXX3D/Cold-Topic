@@ -27,9 +27,9 @@ document.addEventListener('click', (e) => {
 
 function shiftNavLeft() {
   if (!navLinks) return;
-  // shift by search input width plus a small gap
-  const shift = searchInput.offsetWidth + 12;
-  navLinks.style.transition = 'transform 0.2s ease';
+  // shift nav links further left when search is active
+  const shift = searchInput.offsetWidth + 120;
+  navLinks.style.transition = 'transform 0.3s ease';
   navLinks.style.transform = `translateX(-${shift}px)`;
 }
 
