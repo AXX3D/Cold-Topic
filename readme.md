@@ -9,7 +9,7 @@
     <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
   </a>
 <!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">HCI-2-Midterm-Project</h3>
+  <h3 align="center">E-Commerce Project</h3>
 </div>
 <!-- TODO: Make a short description -->
 <div align="center">
