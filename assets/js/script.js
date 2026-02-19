@@ -1,45 +1,40 @@
 const searchToggle = document.getElementById('searchToggle');
 const searchInput = document.getElementById('searchInput');
+const navLinks = document.querySelector('.navLinks');
 
-function positionSearchUnderToggle() {
-  const rect = searchToggle.getBoundingClientRect();
-  searchInput.style.position = 'absolute';
-  searchInput.style.left = (rect.left + window.scrollX) + 'px';
-  searchInput.style.top = (rect.bottom + window.scrollY) + 'px';
-  searchInput.style.zIndex = '1000';
-  // match toggle width or set a minimum width
-  searchInput.style.minWidth = Math.max(rect.width, 200) + 'px';
-}
-
+// Toggle search bar on icon click
 searchToggle.addEventListener('click', (e) => {
   const isActive = searchInput.classList.toggle('active');
   if (isActive) {
-    positionSearchUnderToggle();
+    shiftNavLeft();
     searchInput.focus();
-    window.addEventListener('resize', positionSearchUnderToggle);
-    window.addEventListener('scroll', positionSearchUnderToggle, true);
+    window.addEventListener('resize', shiftNavLeft);
   } else {
-    // clear inline styles when hidden
-    searchInput.style.position = '';
-    searchInput.style.left = '';
-    searchInput.style.top = '';
-    searchInput.style.zIndex = '';
-    searchInput.style.minWidth = '';
-    window.removeEventListener('resize', positionSearchUnderToggle);
-    window.removeEventListener('scroll', positionSearchUnderToggle, true);
+    resetNav();
+    window.removeEventListener('resize', shiftNavLeft);
   }
-  e.stopPropagation();
+  e.stopPropagation(); // prevent triggering document click
 });
 
+// Hide search bar when clicking outside
 document.addEventListener('click', (e) => {
   if (!searchInput.contains(e.target) && !searchToggle.contains(e.target)) {
     searchInput.classList.remove('active');
-    searchInput.style.position = '';
-    searchInput.style.left = '';
-    searchInput.style.top = '';
-    searchInput.style.zIndex = '';
-    searchInput.style.minWidth = '';
-    window.removeEventListener('resize', positionSearchUnderToggle);
-    window.removeEventListener('scroll', positionSearchUnderToggle, true);
+    resetNav();
+    window.removeEventListener('resize', shiftNavLeft);
   }
 });
+
+function shiftNavLeft() {
+  if (!navLinks) return;
+  // shift by search input width plus a small gap
+  const shift = searchInput.offsetWidth + 12;
+  navLinks.style.transition = 'transform 0.2s ease';
+  navLinks.style.transform = `translateX(-${shift}px)`;
+}
+
+function resetNav() {
+  if (!navLinks) return;
+  navLinks.style.transform = '';
+  navLinks.style.transition = '';
+}
