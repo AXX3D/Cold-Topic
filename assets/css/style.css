@@ -13,7 +13,7 @@ body {
   align-items: center;
   padding: 0 48px;
   height: 64px;
-  background-color: #121212;
+  background-color: #ffffff;
 }
 
 .navLeft {
@@ -32,7 +32,7 @@ body {
 }
 
 .logo a:hover {
-  color: #5e99c9;
+  color: #569cd6;
 }
 
 .navLinks {
@@ -76,7 +76,7 @@ body {
 }
 
 .searchIcon:hover {
-  color: #d41484;
+  color: #569cd6;
 }
 
 .searchBar {
@@ -102,7 +102,7 @@ body {
   padding: 6px 14px;
   border: none;
   border-radius: 4px;
-  background-color: #d41484;
+  background-color: #569cd6;
   color: #ffffff;
   font-size: 14px;
   cursor: pointer;
