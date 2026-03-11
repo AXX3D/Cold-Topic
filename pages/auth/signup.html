@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- page-specific styles -->
+  <link rel="stylesheet" href="../auth/assets/css/signup.css">
 </head>
 <body>
 
@@ -22,10 +22,14 @@
         <li><a href="../shop/index.html">Shop</a></li>
         <li><a href="../cart/index.html">Cart</a></li>
       </ul>
+            <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
       <li style="list-style: none; margin-right: 20px;">
         <a href="login.html">Sign In</a>
       </li>
-      <button class="accountButton">
+      <button class="accountButton" onclick="window.location.href='login.html'">
         Sign Up
       </button>
     </div>
@@ -51,6 +55,6 @@
       </p>
     </div>
   </section>
-
+<script src="../../assets/js/script.js"></script>
 </body>
 </html>

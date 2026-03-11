@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <!-- shared styles plus any cart-specific overrides -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="../../index.html">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="./index.html">Cart</a></li>
+      </ul>
+      <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
+      <li style="list-style: none; margin-right: 20px;"><a href="../auth/login.html">Sign In</a></li>
+      <button class="accountButton" onclick="window.location.href='../auth/signup.html'">Sign Up</button>
+    </div>
+  </nav>
+
+  <section class="cartSection">
+    <div class="cartContainer">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+    </div>
+  </section>
+
+  <script src="../../assets/js/script.js"></script>
+</body>
+</html>
