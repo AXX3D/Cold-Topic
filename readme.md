@@ -54,39 +54,17 @@
 ---
 
 ## Overview
+Cold Topic is a website mockup inspired by Letterboxd, designed to showcase the concept of a music‑focused cataloging and review platform. The mockup demonstrates how users could explore music releases, view profiles, and interact with ratings and comments in a visually structured web interface, without implementing real user authentication or live data processing.
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
-Musicbox'd
+### Purpose of the Project
+The purpose of Cold Topic is to present a functional and visually coherent prototype that illustrates how a music catalog and social review website could operate. The project focuses on front‑end design, layout, and user experience, allowing viewers to understand the platform’s intended features and interactions through predefined mock data and sample user accounts.
 
-Musicbox’d is a website mockup inspired by Letterboxd, designed to showcase the concept of a music-focused cataloging and review platform. The mockup demonstrates how users could explore music releases, view profiles, and interact with ratings and comments in a visually structured web interface, without implementing real user authentication or live data processing.
-
-Purpose of the Project
-
-The purpose of Musicbox’d is to present a functional and visually coherent prototype that illustrates how a music catalog and social review website could operate. The project focuses on front-end design, layout, and user experience, allowing viewers to understand the platform’s intended features and interactions through predefined mock data and sample user accounts.
-
-Key Components
-
-The key components of the Musicbox’d mockup include:
-
-Mock User Profiles displaying sample usernames, avatars, and activity summaries
-
-Music Catalog Pages featuring predefined albums, artists, genres, release years, and cover artwork
-
-Rating System that visually represents user ratings for music releases
-
-Comment Sections showing sample user feedback and discussions
-
-Navigation and Layout Components such as a homepage feed, music detail pages, and profile views
-
-Technology Used and Implementation
-
-Musicbox’d is built using HTML for structure, CSS for styling and layout, and JavaScript for basic interactivity such as dynamic rating displays and comment rendering. All data used in the mockup, including user accounts, music entries, ratings, and comments, is static or hard-coded and does not rely on a backend server or database. The project emphasizes front-end design principles, responsive layout, and usability to simulate the behavior of a full-featured music review platform.
 ### Key Components
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
-- MultiPage Website
-- Music Catalog
+- Mock User Profiles displaying sample usernames, avatars, and activity summaries
+- Music Catalog Pages featuring predefined albums, artists, genres, release years, and cover artwork
+- Rating System that visually represents user ratings for music releases
+- Comment Sections showing sample user feedback and discussions
+- Navigation and Layout Components such as a homepage feed, music detail pages, and profile views
 
 ### Technology
 <!-- TODO: List of Technology Used -->
@@ -113,3 +91,4 @@ Musicbox’d is built using HTML for structure, CSS for styling and layout, and 
 | Title | Purpose | Link |
 |-|-|-|
 | Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+
