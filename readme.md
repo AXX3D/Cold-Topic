@@ -57,7 +57,7 @@
 
 <!-- TODO: To be changed -->
 <!-- The following are just sample -->
-Musicbox'd
+Cold Topic
 
 Musicbox’d is a website mockup inspired by Letterboxd, designed to showcase the concept of a music-focused cataloging and review platform. The mockup demonstrates how users could explore music releases, view profiles, and interact with ratings and comments in a visually structured web interface, without implementing real user authentication or live data processing.
 
@@ -113,3 +113,4 @@ Musicbox’d is built using HTML for structure, CSS for styling and layout, and 
 | Title | Purpose | Link |
 |-|-|-|
 | Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+
