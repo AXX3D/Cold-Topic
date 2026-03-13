@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="#">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./pages/shop/index.html">Shop</a></li>
+        <li><a href="./pages/cart/index.html">Cart</a></li>
+      </ul>
+      <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
+      <li style="list-style: none; margin-right: 20px;">
+        <a href="./pages/auth/login.html">Sign In</a>
+      </li>
+      <button class="accountButton" onclick="window.location.href='./pages/auth/signup.html'">
+        Sign Up
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="heroContent">
+      <h1>Featured Product</h1>
+      <p>Discover our latest collection</p>
+      <button class="heroButton" onclick="window.location.href='./pages/shop/index.html'">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="productsSection">
+    <div class="productCard">
+      <div class="productImage"></div>
+      <h3>Product 1</h3>
+      <p class="productPrice">$29.99</p>
+      <button class="productButton">Add to Cart</button>
+    </div>
+    <div class="productCard">
+      <div class="productImage"></div>
+      <h3>Product 2</h3>
+      <p class="productPrice">$39.99</p>
+      <button class="productButton">Add to Cart</button>
+    </div>
+    <div class="productCard">
+      <div class="productImage"></div>
+      <h3>Product 3</h3>
+      <p class="productPrice">$49.99</p>
+      <button class="productButton">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- In Season Section -->
+  <section class="inSeasonSection">
+    <h2>In Season</h2>
+    <div class="productsSection">
+      <div class="productCard">
+        <div class="productImage">
+          <img alt="midnight_jacket" src="midnight_jacket.jpg">
+        </div>
+        <h3>Midnight Winter Jacket</h3>
+        <p class="productPrice">$34.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+      <div class="productCard">
+        <div class="productImage">
+          <img alt="raven_thermal_hodie" src="ravem_thermal_hoodie.jpg">
+        </div>
+        <h3>Raven Thermal Hoodie</h3>
+        <p class="productPrice">$44.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+      <div class="productCard">
+        <div class="productImage"></div>
+        <h3>Graveyard Wool Sweater</h3>
+        <p class="productPrice">$54.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+      <div class="productCard">
+        <div class="productImage"></div>
+        <h3>Shadowfall Fleece Pants</h3>
+        <p class="productPrice">$39.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+      <div class="productCard">
+        <div class="productImage"></div>
+        <h3>Obsidian Beanie Hat</h3>
+        <p class="productPrice">$49.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+      <div class="productCard">
+        <div class="productImage"></div>
+        <h3>Nightshade Winter Scarf</h3>
+        <p class="productPrice">$59.99</p>
+        <button class="productButton">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>

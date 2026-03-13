@@ -1,0 +1,217 @@
+html {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  height: 4rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  color: #000000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 2rem;
+  padding: 0 .25rem;
+  border-radius: 8px;
+}
+
+.logo a:hover {
+  color: #87ceeb;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.navLinks li {
+  margin-right: 1.25rem;
+}
+
+.navLinks a {
+  color: #383838;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.navLinks a:hover {
+  color: #87ceeb;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.navRight a {
+  transition: color 0.3s ease;
+}
+
+.navRight a:hover {
+  color: #87ceeb;
+}
+
+.navRight li a {
+  color: #383838;
+  text-decoration: none;
+  font-size: 0.9375rem;
+}
+
+/* search bar styling copied from main stylesheet */
+.searchContainer {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.searchIcon {
+  font-size: 0.9375rem;
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.searchIcon:hover {
+  color: #87ceeb;
+}
+
+.searchBar {
+  position: absolute;
+  right: 0;
+  top: -5px;
+  width: 0;
+  padding: 0.375rem 0.625rem;
+  opacity: 0;
+  border-radius: 4px;
+  border: none;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.searchBar.active {
+  width: 11.25rem;
+  opacity: 1;
+  padding: 0.375rem 0.625rem;
+}
+
+.accountButton {
+  padding: 0.375rem 0.875rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #569cd6;
+  color: #ffffff;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.accountButton:hover {
+  opacity: 0.9;
+}
+
+.authSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 4rem);
+  padding: 2rem 3rem;
+  background-color: #f5f5f5;
+}
+
+.authContainer {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.authContainer h2 {
+  font-size: 2rem;
+  color: #383838;
+  margin: 0 0 0.5rem 0;
+}
+
+.authContainer p {
+  color: #666666;
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+}
+
+.authContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.authContainer input {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.authContainer input:focus {
+  outline: none;
+  border-color: #569cd6;
+}
+
+.authButton {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #569cd6;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.authButton:hover {
+  opacity: 0.9;
+}
+
+.authSwitch {
+  margin-top: 1.5rem;
+  color: #666666;
+  font-size: 0.9375rem;
+}
+
+.authSwitch a {
+  color: #569cd6;
+  text-decoration: none;
+}
+
+.authSwitch a:hover {
+  text-decoration: underline;
+}
