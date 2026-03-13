@@ -25,8 +25,6 @@
         <button class="searchIcon" id="searchToggle">Search</button>
         <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
       </div>
-      <li style="list-style: none; margin-right: 20px;"><a href="../auth/login.html">Sign In</a></li>
-      <button class="accountButton" onclick="window.location.href='../auth/signup.html'">Sign Up</button>
     </div>
   </nav>
 
@@ -48,52 +46,7 @@
     <div class="categoryContent" id="inSeason">
       <h2>In Season</h2>
       <div class="productsSection">
-        <div class="productCard">
-          <div class="productImage">
-            <img alt="midnight_jacket" src="midnight_jacket.jpg">
-          </div>
-          <h3>Midnight Winter Jacket</h3>
-          <p class="productPrice">$34.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
-        <div class="productCard">
-          <div class="productImage">
-            <img alt="raven_thermal_hodie" src="ravem_thermal_hoodie.jpg">
-          </div>
-          <h3>Raven Thermal Hoodie</h3>
-          <p class="productPrice">$44.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
-        <div class="productCard">
-          <div class="productImage">
-            <img alt="graveyard_wool" src="Graveyard_Wool.jpg">
-          </div>
-          <h3>Graveyard Wool Sweater</h3>
-          <p class="productPrice">$54.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
-        <div class="productCard">
-          <div class="productImage">
-            <img alt="shadowfall_fleece" src="Shadowfall_Fleece.jpg">
-          </div>
-          <h3>Shadowfall Fleece Pants</h3>
-          <p class="productPrice">$39.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
-        <div class="productCard">
-          <div class="productImage">
-            <img alt="Obsidian_beanie" src="Obsidian_Beanie.jpg">
-          </div>
-          <h3>Obsidian Beanie Hat</h3>
-          <p class="productPrice">$49.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
-        <div class="productCard">
-          <div class="productImage"></div>
-          <h3>Nightshade Winter Scarf</h3>
-          <p class="productPrice">$59.99</p>
-          <button class="productButton">Add to Cart</button>
-        </div>
+        <!-- Products will be dynamically loaded here -->
       </div>
     </div>
 
@@ -314,20 +267,27 @@
   </section>
 
   <script src="../../assets/js/script.js"></script>
+  <script src="../../assets/js/auth.js"></script>
   <script>
-    // Category switching functionality
-    document.querySelectorAll('.categoryLink').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const category = link.dataset.category;
-        
-        // Hide all categories
-        document.querySelectorAll('.categoryContent').forEach(content => {
-          content.style.display = 'none';
+    // Initialize shop page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show inSeason by default
+      document.getElementById('inSeason').style.display = 'block';
+
+      // Category switching functionality
+      document.querySelectorAll('.categoryLink').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const category = link.dataset.category;
+
+          // Hide all categories
+          document.querySelectorAll('.categoryContent').forEach(content => {
+            content.style.display = 'none';
+          });
+
+          // Show selected category
+          document.getElementById(category).style.display = 'block';
         });
-        
-        // Show selected category
-        document.getElementById(category).style.display = 'block';
       });
     });
   </script>

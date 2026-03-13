@@ -197,6 +197,7 @@ body {
 }
 
 .productCard {
+  position: relative;
   width: 20rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -260,4 +261,134 @@ body {
 
 .productButton:hover {
   opacity: 0.9;
+}
+
+/* Admin Styles */
+#adminPanel {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-header h3 {
+  margin: 0;
+  color: #383838;
+}
+
+.admin-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #569cd6;
+  color: #ffffff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.admin-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.admin-modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.admin-modal-content {
+  background-color: #ffffff;
+  margin: 15% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.admin-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #383838;
+}
+
+.admin-modal-close:hover {
+  color: #dc3545;
+}
+
+.admin-modal h3 {
+  margin-top: 0;
+  color: #383838;
+}
+
+.admin-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-modal input {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.admin-modal .admin-btn {
+  align-self: flex-start;
+}
+
+.admin-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-controls button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.admin-controls .edit-btn {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.admin-controls .delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.admin-controls button:hover {
+  opacity: 0.8;
+}
+
+.productCard {
+  position: relative;
 }

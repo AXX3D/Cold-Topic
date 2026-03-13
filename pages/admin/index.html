@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Cold Topic</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/admin.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="../../index.html">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../cart/index.html">Cart</a></li>
+      </ul>
+      <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
+    </div>
+  </nav>
+
+  <section class="admin-dashboard">
+    <div class="dashboard-container">
+      <h1>Admin Dashboard</h1>
+      <p>Welcome to the admin panel. Manage your store from here.</p>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h3>Product Management</h3>
+          <p>Manage your product catalog</p>
+          <div class="card-actions">
+            <button class="admin-btn" onclick="window.location.href='../shop/index.html'">Manage Products</button>
+            <button class="admin-btn primary" id="quickAddProduct">Quick Add Product</button>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>User Management</h3>
+          <p>View and manage user accounts</p>
+          <div class="card-actions">
+            <button class="admin-btn" id="viewUsersBtn" onclick="openUsersModal()">View Users</button>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Order Management</h3>
+          <p>View and process orders</p>
+          <div class="card-actions">
+            <button class="admin-btn" id="viewOrders">View Orders</button>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Analytics</h3>
+          <p>View store statistics</p>
+          <div class="card-actions">
+            <button class="admin-btn" id="viewAnalytics">View Analytics</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-access-section">
+        <h2>Quick Access</h2>
+        <div class="quick-actions">
+          <button class="quick-btn" onclick="window.location.href='../shop/index.html'">
+            <span class="quick-icon">SHOP</span>
+            <span>Shop Management</span>
+          </button>
+          <button class="quick-btn" onclick="openProductModal()">
+            <span class="quick-icon">ADD</span>
+            <span>Add Product</span>
+          </button>
+          <button class="quick-btn" onclick="openUsersModal()">
+            <span class="quick-icon">USER</span>
+            <span>View Users</span>
+          </button>
+          <button class="quick-btn" onclick="window.location.href='../../../index.html'">
+            <span class="quick-icon">SITE</span>
+            <span>View Store</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <h2>Quick Stats</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h4>Total Products</h4>
+            <span class="stat-number" id="totalProducts">0</span>
+          </div>
+          <div class="stat-card">
+            <h4>Total Users</h4>
+            <span class="stat-number" id="totalUsers">0</span>
+          </div>
+          <div class="stat-card">
+            <h4>Pending Orders</h4>
+            <span class="stat-number" id="pendingOrders">0</span>
+          </div>
+          <div class="stat-card">
+            <h4>Revenue</h4>
+            <span class="stat-number" id="totalRevenue">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-section">
+        <h2>Recent Products</h2>
+        <div class="products-list" id="recentProducts">
+          <!-- Products will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="adminModal" class="admin-modal" style="display: none;">
+    <div class="admin-modal-content">
+      <span class="admin-modal-close">&times;</span>
+      <h3>Quick Add Product</h3>
+      <form id="productForm">
+        <input type="text" id="productName" placeholder="Product Name" required>
+        <select id="productCategory" required>
+          <option value="">Select Category</option>
+          <option value="inSeason">In Season</option>
+          <option value="onSale">On Sale</option>
+          <option value="featured">Featured</option>
+          <option value="teens">Teens</option>
+          <option value="adults">Adults</option>
+          <option value="partner">Partner Merchandise</option>
+        </select>
+        <input type="text" id="productPrice" placeholder="Price (e.g. $29.99)" required>
+        <input type="text" id="productImage" placeholder="Image filename (e.g. midnight_jacket.jpg)" required>
+        <button type="submit" class="admin-btn">Add Product</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="usersModal" class="admin-modal" style="display: none;">
+    <div class="admin-modal-content large">
+      <span class="admin-modal-close">&times;</span>
+      <h3>User Management</h3>
+      <div class="users-list" id="usersList">
+        <!-- Users will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
