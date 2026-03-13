@@ -59,45 +59,165 @@ function resetNav() {
 
 /* PRODUCT DATA -------------------------------------------------------- */
 
-const allProducts = [
-  { name: 'Midnight Winter Jacket', price: '$34.99' },
-  { name: 'Raven Thermal Hoodie', price: '$44.99' },
-  { name: 'Graveyard Wool Sweater', price: '$54.99' },
-  { name: 'Shadowfall Fleece Pants', price: '$39.99' },
-  { name: 'Obsidian Beanie Hat', price: '$49.99' },
-  { name: 'Nightshade Winter Scarf', price: '$59.99' },
-  { name: 'Cursed Vintage T Shirt', price: '$19.99' },
-  { name: 'Phantom Denim Jacket', price: '$24.99' },
-  { name: 'Hellfire Cargo Pants', price: '$29.99' },
-  { name: 'Eclipse Graphic Hoodie', price: '$34.99' },
-  { name: 'Void Joggers', price: '$39.99' },
-  { name: 'Noir Crop Top', price: '$44.99' },
-  { name: 'Gothic Leather Jacket', price: '$49.99' },
-  { name: 'Darkside Designer Jeans', price: '$59.99' },
-  { name: 'Moonlit Silk Blouse', price: '$69.99' },
-  { name: 'Graveyard Cardigan', price: '$54.99' },
-  { name: 'Nocturnal Wool Coat', price: '$64.99' },
-  { name: 'Eternal Dress Pants', price: '$74.99' },
-  { name: 'Haunted Oversized Hoodie', price: '$24.99' },
-  { name: 'Reaper Ripped Jeans', price: '$29.99' },
-  { name: 'Witchy Crop Tank Top', price: '$34.99' },
-  { name: 'Hellish Streetwear Jacket', price: '$39.99' },
-  { name: 'Spectral Sweatpants', price: '$44.99' },
-  { name: 'Hellfire Graphic T Shirt', price: '$49.99' },
-  { name: 'Elegant Business Blazer', price: '$44.99' },
-  { name: 'Shadowed Oxford Shirt', price: '$54.99' },
-  { name: 'Blackened Chinos', price: '$64.99' },
-  { name: 'Twilight Polo Shirt', price: '$49.99' },
-  { name: 'Mystique Casual Loafers', price: '$69.99' },
-  { name: 'Paramore T Shirt', price: '$39.99' },
-  { name: 'My Chemical Romance Hoodie', price: '$49.99' },
-  { name: 'Panic! At The Disco Cap', price: '$59.99' },
-  { name: 'Fall Out Boy Sweater', price: '$44.99' },
-  { name: 'The Killers Jacket', price: '$54.99' },
-  { name: 'Imagine Dragons Beanie', price: '$64.99' }
+const productImageBasePath = window.location.pathname.includes('/pages/') ? '../../assets/img/' : './assets/img/';
+const fallbackProductImage = 'nyebe_white.png';
+
+function normalizeProductImage(image) {
+  if (!image) {
+    return fallbackProductImage;
+  }
+
+  if (/^(https?:|data:|\.{0,2}\/|\/)/i.test(image)) {
+    return image;
+  }
+
+  return `${productImageBasePath}${image}`;
+}
+
+function getProductImageSrc(product) {
+  return normalizeProductImage(product && product.image);
+}
+
+function createProductImageMarkup(product) {
+  const imageSrc = getProductImageSrc(product);
+  return `<img class="productImage" src="${imageSrc}" alt="${product.name}" onerror="this.onerror=null;this.src='${normalizeProductImage(fallbackProductImage)}';">`;
+}
+
+// Default products
+const defaultProducts = [
+  { id: 1, name: 'Midnight Winter Jacket', price: '$34.99', category: 'inSeason', image: 'midnight_jacket.jpg' },
+  { id: 2, name: 'Raven Thermal Hoodie', price: '$44.99', category: 'inSeason', image: 'ravem_thermal_hoodie.jpg' },
+  { id: 3, name: 'Graveyard Wool Sweater', price: '$54.99', category: 'inSeason', image: 'Graveyard_Wool.jpg' },
+  { id: 4, name: 'Shadowfall Fleece Pants', price: '$39.99', category: 'inSeason', image: 'Shadowfall_Fleece.jpg' },
+  { id: 5, name: 'Obsidian Beanie Hat', price: '$49.99', category: 'inSeason', image: 'Obsidian_Beanie.jpg' },
+  { id: 6, name: 'Nightshade Winter Scarf', price: '$59.99', category: 'inSeason', image: 'scarf.jpg' },
+  { id: 7, name: 'Cursed Vintage T Shirt', price: '$19.99', category: 'onSale', image: 'Cursed_shirt.jpg' },
+  { id: 8, name: 'Phantom Denim Jacket', price: '$24.99', category: 'onSale', image: 'denim_jacket.jpg' },
+  { id: 9, name: 'Hellfire Cargo Pants', price: '$29.99', category: 'onSale', image: 'hellfire_cargo.jpg' },
+  { id: 10, name: 'Eclipse Graphic Hoodie', price: '$34.99', category: 'onSale', image: 'eclypse_hoodie.jpg' },
+  { id: 11, name: 'Void Joggers', price: '$39.99', category: 'onSale', image: 'void_jogger.jpg' },
+  { id: 12, name: 'Noir Crop Top', price: '$44.99', category: 'onSale', image: 'noir_crop.jpg' },
+  { id: 13, name: 'Gothic Leather Jacket', price: '$49.99', category: 'featured', image: 'gothic_jacket.jpg' },
+  { id: 14, name: 'Darkside Designer Jeans', price: '$59.99', category: 'featured', image: 'Darkside_Designer_Jeans.webp' },
+  { id: 15, name: 'Moonlit Silk Blouse', price: '$69.99', category: 'featured', image: 'moonsilk_blouse.jpg' },
+  { id: 16, name: 'Graveyard Cardigan', price: '$54.99', category: 'featured', image: 'Graveyard_Cardigan.jpg' },
+  { id: 17, name: 'Nocturnal Wool Coat', price: '$64.99', category: 'featured', image: 'Nocturnal_Coat.jpg' },
+  { id: 18, name: 'Eternal Dress Pants', price: '$74.99', category: 'featured', image: 'Eternal_Dress_Pants.png' },
+  { id: 19, name: 'Haunted Oversized Hoodie', price: '$24.99', category: 'teens', image: 'Haunted_Hoodie.jpg' },
+  { id: 20, name: 'Reaper Ripped Jeans', price: '$29.99', category: 'teens', image: 'Reaper_Jeans.png' },
+  { id: 21, name: 'Witchy Crop Tank Top', price: '$34.99', category: 'teens', image: 'witch_crop_top.jpg' },
+  { id: 22, name: 'Hellish Streetwear Jacket', price: '$39.99', category: 'teens', image: 'Hellish_Streetwear_Jacket.jpg' },
+  { id: 23, name: 'Spectral Sweatpants', price: '$44.99', category: 'teens', image: 'Spectral_Sweatpants.webp' },
+  { id: 24, name: 'Hellfire Graphic T Shirt', price: '$49.99', category: 'teens', image: 'Hellfire_Shirt.avif' },
+  { id: 25, name: 'Elegant Business Blazer', price: '$44.99', category: 'adults', image: 'Elegant_Business_Blazer.webp' },
+  { id: 26, name: 'Shadowed Oxford Shirt', price: '$54.99', category: 'adults', image: 'Shadowed_Oxford_Shirt.webp' },
+  { id: 27, name: 'Blackened Chinos', price: '$64.99', category: 'adults', image: 'Blackened_Chinos.webp' },
+  { id: 28, name: 'Twilight Polo Shirt', price: '$49.99', category: 'adults', image: 'Twilight_Polo_Shirt.webp' },
+  { id: 29, name: 'Mystique Casual Loafers', price: '$69.99', category: 'adults', image: 'Mystique_Casual_Loafers.jpg' },
+  { id: 30, name: 'Paramore T Shirt', price: '$39.99', category: 'partner', image: 'Paramore_Shirt.avif' },
+  { id: 31, name: 'My Chemical Romance Hoodie', price: '$49.99', category: 'partner', image: 'My_Chemical_Romance_Hoodie.jpg' },
+  { id: 32, name: 'Panic! At The Disco Cap', price: '$59.99', category: 'partner', image: 'Panic!_At_The_Disco_Cap.jpg' },
+  { id: 33, name: 'Fall Out Boy Sweater', price: '$44.99', category: 'partner', image: 'Fall_Out_Boy_Sweater.avif' },
+  { id: 34, name: 'The Killers Jacket', price: '$54.99', category: 'partner', image: 'The_Killers_Jacket.webp' },
+  { id: 35, name: 'Imagine Dragons Beanie', price: '$64.99', category: 'partner', image: 'Imagine_Dragons_Beanie.png' }
 ];
 
+// Initialize products in localStorage
+function initializeProducts() {
+  const stored = localStorage.getItem('products');
+  if (!stored) {
+    localStorage.setItem('products', JSON.stringify(defaultProducts));
+    return;
+  }
+
+  const defaultById = new Map(defaultProducts.map(product => [product.id, product]));
+  const products = JSON.parse(stored);
+  let hasChanges = false;
+
+  const upgradedProducts = products.map(product => {
+    const fallbackProduct = defaultById.get(product.id);
+    const upgradedProduct = { ...product };
+
+    if (!upgradedProduct.image && fallbackProduct && fallbackProduct.image) {
+      upgradedProduct.image = fallbackProduct.image;
+      hasChanges = true;
+    }
+
+    return upgradedProduct;
+  });
+
+  if (hasChanges) {
+    localStorage.setItem('products', JSON.stringify(upgradedProducts));
+  }
+}
+
+// Read all products from localStorage, seeding defaults on first use.
+function getAllProducts() {
+  initializeProducts();
+  const stored = localStorage.getItem('products');
+  return stored ? JSON.parse(stored) : [...defaultProducts];
+}
+
+// Get products by category
+function getProductsByCategory(category) {
+  const allProducts = getProducts();
+  if (category === 'inSeason') {
+    return allProducts; // In Season shows all products
+  }
+  return allProducts.filter(product => product.category === category);
+}
+
+// Save products to localStorage
+function saveProducts(products) {
+  localStorage.setItem('products', JSON.stringify(products));
+}
+
+// Add new product (admin only)
+function addProduct(name, price, category = 'inSeason', image = fallbackProductImage) {
+  const products = getAllProducts();
+  const newId = Math.max(...products.map(p => p.id), 0) + 1;
+  const newProduct = { id: newId, name, price, category, image };
+  products.push(newProduct);
+  saveProducts(products);
+  return newProduct;
+}
+
+// Edit product (admin only)
+function editProduct(id, name, price, category, image) {
+  const products = getAllProducts();
+  const index = products.findIndex(p => p.id === id);
+  if (index !== -1) {
+    products[index] = {
+      ...products[index],
+      name,
+      price,
+      category,
+      image: image || products[index].image || fallbackProductImage
+    };
+    saveProducts(products);
+    return true;
+  }
+  return false;
+}
+
+// Delete product (admin only)
+function deleteProduct(id) {
+  const products = getAllProducts();
+  const filtered = products.filter(p => p.id !== id);
+  if (filtered.length < products.length) {
+    saveProducts(filtered);
+    return true;
+  }
+  return false;
+}
+
+// Get products for display (replaces allProducts)
+function getProducts() {
+  return getAllProducts();
+}
+
 function getRandomProducts(count = 3) {
+  const allProducts = getProducts();
   const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 }
@@ -114,10 +234,30 @@ function randomizeHomeProducts() {
       const product = randomProducts[index];
       const h3 = card.querySelector('h3');
       const price = card.querySelector('.productPrice');
+      const image = card.querySelector('.productImage');
       
       if (h3) h3.innerText = product.name;
       if (price) price.innerText = product.price;
+      if (image) {
+        image.outerHTML = createProductImageMarkup(product);
+      }
     }
+  });
+}
+
+function hydrateExistingProductCards() {
+  const cards = document.querySelectorAll('.productCard');
+  const productsByName = new Map(getProducts().map(product => [product.name.toLowerCase(), product]));
+
+  cards.forEach(card => {
+    const nameElement = card.querySelector('h3');
+    const imageElement = card.querySelector('.productImage');
+    if (!nameElement || !imageElement) return;
+
+    const product = productsByName.get(nameElement.innerText.trim().toLowerCase());
+    if (!product || imageElement.tagName === 'IMG') return;
+
+    imageElement.outerHTML = createProductImageMarkup(product);
   });
 }
 
@@ -297,10 +437,208 @@ function setupCheckout() {
   }
 }
 
+/* ADMIN FUNCTIONS -------------------------------------------------------- */
+
+// Check if current user is admin
+function isCurrentUserAdmin() {
+  // This will be available from auth.js
+  return typeof getCurrentUser === 'function' && getCurrentUser() && getCurrentUser().role === 'admin';
+}
+
+// Show admin controls for products
+function showAdminControls() {
+  // Admin controls are now in the dedicated admin dashboard
+  // This function is kept for backward compatibility but doesn't show controls on shop page
+  return;
+}
+
+// Setup admin event listeners
+function setupAdminEventListeners() {
+  const addBtn = document.getElementById('addProductBtn');
+  const modal = document.getElementById('adminModal');
+  const closeBtn = document.querySelector('.admin-modal-close');
+  const form = document.getElementById('productForm');
+  const deleteBtn = document.getElementById('deleteBtn');
+
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      openProductModal();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', handleProductSubmit);
+  }
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', handleProductDelete);
+  }
+
+  // Close modal when clicking outside
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+}
+
+// Open product modal for adding
+function openProductModal(product = null) {
+  const modal = document.getElementById('adminModal');
+  const title = document.getElementById('modalTitle');
+  const form = document.getElementById('productForm');
+  const nameInput = document.getElementById('productName');
+  const priceInput = document.getElementById('productPrice');
+  const idInput = document.getElementById('productId');
+  const deleteBtn = document.getElementById('deleteBtn');
+
+  if (product) {
+    title.textContent = 'Edit Product';
+    nameInput.value = product.name;
+    priceInput.value = product.price;
+    idInput.value = product.id;
+    deleteBtn.style.display = 'inline-block';
+  } else {
+    title.textContent = 'Add Product';
+    form.reset();
+    idInput.value = '';
+    deleteBtn.style.display = 'none';
+  }
+
+  modal.style.display = 'block';
+}
+
+// Handle product form submission
+function handleProductSubmit(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('productName').value;
+  const price = document.getElementById('productPrice').value;
+  const id = document.getElementById('productId').value;
+
+  if (id) {
+    // Edit existing product
+    editProduct(parseInt(id), name, price);
+  } else {
+    // Add new product
+    addProduct(name, price);
+  }
+
+  document.getElementById('adminModal').style.display = 'none';
+  location.reload(); // Refresh to show changes
+}
+
+// Handle product deletion
+function handleProductDelete() {
+  const id = document.getElementById('productId').value;
+  if (confirm('Are you sure you want to delete this product?')) {
+    deleteProduct(parseInt(id));
+    document.getElementById('adminModal').style.display = 'none';
+    location.reload(); // Refresh to show changes
+  }
+}
+
+// Edit product UI
+function editProductUI(id) {
+  const products = getProducts();
+  const product = products.find(p => p.id === id);
+  if (product) {
+    openProductModal(product);
+  }
+}
+
+// Delete product UI
+function deleteProductUI(id) {
+  if (confirm('Are you sure you want to delete this product?')) {
+    deleteProduct(id);
+    location.reload(); // Refresh to show changes
+  }
+}
+
+// Render products in shop page
+function renderShopProducts() {
+  const products = getProducts();
+  const shopContainer = document.querySelector('.productsContainer');
+
+  if (!shopContainer) return;
+
+  // Create "All Products" section if it doesn't exist
+  let allProductsSection = document.getElementById('inSeason');
+  if (!allProductsSection) {
+    allProductsSection = document.createElement('div');
+    allProductsSection.className = 'categoryContent';
+    allProductsSection.id = 'inSeason';
+    allProductsSection.innerHTML = '<h2>In Season</h2><div class="productsSection"></div>';
+    shopContainer.appendChild(allProductsSection);
+  }
+
+  const productsContainer = allProductsSection.querySelector('.productsSection');
+  productsContainer.innerHTML = '';
+
+  products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'productCard';
+    productCard.setAttribute('data-product-id', product.id);
+    productCard.innerHTML = `
+      ${createProductImageMarkup(product)}
+      <h3>${product.name}</h3>
+      <p class="productPrice">${product.price}</p>
+      <button class="productButton">Add to Cart</button>
+    `;
+    productsContainer.appendChild(productCard);
+  });
+
+  // Re-setup cart buttons after rendering
+  setupShopCartButtons();
+}
+
+// Render products for a specific category
+function renderCategoryProducts(categoryId) {
+  const categoryElement = document.getElementById(categoryId);
+  if (!categoryElement) return;
+
+  const productsSection = categoryElement.querySelector('.productsSection');
+  if (!productsSection) return;
+
+  const products = getProductsByCategory(categoryId);
+  productsSection.innerHTML = '';
+
+  products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'productCard';
+    productCard.setAttribute('data-product-id', product.id);
+    productCard.innerHTML = `
+      ${createProductImageMarkup(product)}
+      <h3>${product.name}</h3>
+      <p class="productPrice">${product.price}</p>
+      <button class="productButton">Add to Cart</button>
+    `;
+    productsSection.appendChild(productCard);
+  });
+
+  // Re-setup cart buttons after rendering
+  setupShopCartButtons();
+}
+
 // initialize when document ready
 document.addEventListener('DOMContentLoaded', () => {
+  initializeProducts(); // Initialize products first
   randomizeHomeProducts();
+  hydrateExistingProductCards();
   setupShopCartButtons();
   setupCheckout();
   renderCart();
+
+  // Only render shop products on shop page
+  if (document.querySelector('.productsContainer')) {
+    renderShopProducts(); // Render products in shop
+  }
+
+  showAdminControls(); // Show admin controls if user is admin
 });
