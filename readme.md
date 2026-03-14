@@ -5,21 +5,16 @@
 <br />
 <div align="center">
   <a href="https://github.com/AXX3D/">
-  <!-- TODO: If you want to add logo or banner you can add it here -->
     <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
   </a>
-<!-- TODO: Change Title to the name of the title of your Project -->
   <h3 align="center">E-Commerce Project</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
   A Website Mockup Project
 </div>
 
 <br />
 
-<!-- TODO: Change the zyx-0314 into your github username  -->
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
 ![](https://visit-counter.vercel.app/counter.png?page=AXX3D/Half-Life-3)
 
 ---
@@ -27,7 +22,6 @@
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -59,37 +53,32 @@
 <!-- The following are just sample -->
 Cold Topic
 
-Cold Topic is a website mockup inspired by Letterboxd, designed to showcase the concept of a music-focused cataloging and review platform. The mockup demonstrates how users could explore music releases, view profiles, and interact with ratings and comments in a visually structured web interface, without implementing real user authentication or live data processing.
+Cold Topic is a website mockup inspired by Hot Topic, designed to showcase clothing products and band merchandise.
 
 Purpose of the Project
 
-The purpose of Cold Topic is to present a functional and visually coherent prototype that illustrates how a music catalog and social review website could operate. The project focuses on front-end design, layout, and user experience, allowing viewers to understand the platform’s intended features and interactions through predefined mock data and sample user accounts.
+The purpose of Cold Topic is to present a functional and visually coherent prototype that illustrates how an e-commerce platform would operate. The project focuses on front-end design, layout, and user experience, allowing viewers to understand the platform’s intended features and interactions through predefined mock data and sample user accounts.
 
 Key Components
 
 The key components of the Cold Topic mockup include:
 
-Mock User Profiles displaying sample usernames, avatars, and activity summaries
+Mock User Profiles displaying usernames
 
-Music Catalog Pages featuring predefined albums, artists, genres, release years, and cover artwork
+Sample clothing products
 
-Rating System that visually represents user ratings for music releases
-
-Comment Sections showing sample user feedback and discussions
-
-Navigation and Layout Components such as a homepage feed, music detail pages, and profile views
+Navigation and Layout Components such as a home, shop, and cart page
 
 Technology Used and Implementation
 
 Cold Topic is built using HTML for structure, CSS for styling and layout, and JavaScript for basic interactivity such as dynamic rating displays and comment rendering. All data used in the mockup, including user accounts, music entries, ratings, and comments, is static or hard-coded and does not rely on a backend server or database. The project emphasizes front-end design principles, responsive layout, and usability to simulate the behavior of a full-featured music review platform.
 ### Key Components
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
 - MultiPage Website
-- Music Catalog
+- Clothing Catalog
+- Admin Dashboard
+- Accounts
 
 ### Technology
-<!-- TODO: List of Technology Used -->
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
