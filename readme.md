@@ -106,12 +106,3 @@ Cold Topic is built using HTML for structure, CSS for styling and layout, and Ja
    - ex.: buttonAnimatedStyle.css
 5. Use only `External CSS`.
 6. Renaming of Pages folder names are a must, and relates to what it is doing or data it holding.
-
-## Resources
-
-<!-- TODO: Add References -->
-| Title | Purpose | Link |
-|-|-|-|
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-
-
