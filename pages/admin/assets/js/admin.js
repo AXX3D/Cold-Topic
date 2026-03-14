@@ -4,7 +4,7 @@
 function checkAdminAccess() {
   if (!isCurrentUserAdmin()) {
     alert('Access denied. Admin privileges required.');
-    window.location.href = '../index.html';
+    window.location.href = '../../index.html';
     return false;
   }
   return true;
