@@ -123,8 +123,10 @@ a {
 .auth-elements .nav-link {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
-  padding: 0.5rem 0.9rem;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+  gap: 0.45rem;
   border-radius: 999px;
   color: #356089;
   font-size: 0.92rem;
@@ -152,8 +154,15 @@ a {
 .accountButton,
 .auth-elements .logout-btn,
 .auth-elements .admin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.85rem;
+  min-height: 2.85rem;
+  height: auto;
   min-height: 2.7rem;
-  padding: 0.7rem 1.05rem;
+  padding: 0.6rem 1rem;
+  gap: 0.5rem;
   border: 1px solid transparent;
   border-radius: 999px;
   font-size: 0.84rem;
@@ -314,6 +323,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   min-height: 3rem;
   padding: 0.8rem 1.35rem;
   border: 1px solid rgba(44, 104, 179, 0.12);
@@ -477,6 +487,26 @@ a {
 
 .productButton {
   width: 100%;
+}
+
+.btn-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-icon {
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.button-label {
+  line-height: 1;
 }
 
 .cartSection,

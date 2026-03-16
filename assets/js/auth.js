@@ -188,6 +188,14 @@ function updateNavbar() {
   }
 
   navRight.appendChild(authDiv);
+
+  if (typeof applyNavbarIcons === 'function') {
+    applyNavbarIcons(authDiv);
+  }
+
+  if (typeof applyContextualIcons === 'function') {
+    applyContextualIcons(authDiv);
+  }
 }
 
 // Initialize auth on page load

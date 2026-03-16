@@ -2,22 +2,265 @@ const searchToggle = document.getElementById('searchToggle');
 const searchInput = document.getElementById('searchInput');
 const navLinks = document.querySelector('.navLinks');
 
-// Toggle search bar on icon click
-searchToggle.addEventListener('click', (e) => {
-  const isActive = searchInput.classList.toggle('active');
-  if (isActive) {
-    shiftNavLeft();
-    searchInput.focus();
-    window.addEventListener('resize', shiftNavLeft);
-  } else {
-    resetNav();
-    window.removeEventListener('resize', shiftNavLeft);
+function getSiteIconMarkup(iconName) {
+  const icons = {
+    home: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 11.5L12 5l8 6.5"></path>
+        <path d="M6.5 10.5V19h11v-8.5"></path>
+      </svg>
+    `,
+    search: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="11" cy="11" r="6"></circle>
+        <path d="M20 20l-4.2-4.2"></path>
+      </svg>
+    `,
+    shop: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 10h16"></path>
+        <path d="M6 10l1-4h10l1 4"></path>
+        <path d="M6 10v8h12v-8"></path>
+      </svg>
+    `,
+    cart: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="9" cy="19" r="1.5"></circle>
+        <circle cx="17" cy="19" r="1.5"></circle>
+        <path d="M4 5h2l2.2 9h9.3l2-7H7.2"></path>
+      </svg>
+    `,
+    addToCart: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="9" cy="19" r="1.5"></circle>
+        <circle cx="17" cy="19" r="1.5"></circle>
+        <path d="M4 5h2l2.2 9h9.3l2-7H7.2"></path>
+        <path d="M14 8v4"></path>
+        <path d="M12 10h4"></path>
+      </svg>
+    `,
+    signup: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="10" cy="8" r="3"></circle>
+        <path d="M4.5 18a5.5 5.5 0 0 1 11 0"></path>
+        <path d="M18 8v6"></path>
+        <path d="M15 11h6"></path>
+      </svg>
+    `,
+    login: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M10 17l5-5-5-5"></path>
+        <path d="M15 12H4"></path>
+        <path d="M20 5v14"></path>
+      </svg>
+    `,
+    logout: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M14 7l5 5-5 5"></path>
+        <path d="M19 12H8"></path>
+        <path d="M4 5v14"></path>
+      </svg>
+    `,
+    admin: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 3l7 4v5c0 4.4-3 7.8-7 9-4-1.2-7-4.6-7-9V7l7-4z"></path>
+        <path d="M9.5 12l1.7 1.7 3.3-3.4"></path>
+      </svg>
+    `,
+    checkout: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 12h14"></path>
+        <path d="M13 6l6 6-6 6"></path>
+      </svg>
+    `,
+    cancel: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 6l12 12"></path>
+        <path d="M18 6L6 18"></path>
+      </svg>
+    `,
+    trash: `
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 7h14"></path>
+        <path d="M9 7V4h6v3"></path>
+        <path d="M8 7l1 13h6l1-13"></path>
+        <path d="M10 11v6"></path>
+        <path d="M14 11v6"></path>
+      </svg>
+    `
+  };
+
+  return icons[iconName] || '';
+}
+
+function getSiteIconButtonMarkup(iconName, label) {
+  return `${getSiteIconMarkup(iconName)}<span class="button-label">${label}</span>`;
+}
+
+function getSiteIconInlineMarkup(iconName, label) {
+  return `${getSiteIconMarkup(iconName).replace('class="btn-icon"', 'class="btn-icon nav-icon"')}<span class="button-label">${label}</span>`;
+}
+
+function getNavbarIconConfig(element) {
+  if (!element || element.hasAttribute('data-nav-icon-applied')) {
+    return null;
   }
-  e.stopPropagation(); // prevent triggering document click
-});
+
+  const text = element.textContent.trim();
+  const lowerText = text.toLowerCase();
+  const href = (element.getAttribute('href') || '').toLowerCase();
+
+  if (lowerText.includes('home')) {
+    return { icon: 'home', label: text || 'Home' };
+  }
+
+  if (lowerText.includes('shop')) {
+    return { icon: 'shop', label: text || 'Shop' };
+  }
+
+  if (lowerText.includes('cart')) {
+    return { icon: 'cart', label: text || 'Cart' };
+  }
+
+  if (lowerText.includes('sign in') || lowerText === 'login' || href.includes('login.html')) {
+    return { icon: 'login', label: text || 'Sign In' };
+  }
+
+  if (lowerText.includes('sign up') || href.includes('signup.html')) {
+    return { icon: 'signup', label: text || 'Sign Up' };
+  }
+
+  if (lowerText.includes('admin')) {
+    return { icon: 'admin', label: text || 'Admin Dashboard' };
+  }
+
+  return null;
+}
+
+function applyNavbarIcons(root = document) {
+  const scope = root && typeof root.querySelectorAll === 'function' ? root : document;
+  const navItems = scope.querySelectorAll('.navbar a, .navbar button.accountButton, .auth-elements .admin-link');
+
+  navItems.forEach(item => {
+    if (item.closest('.logo')) return;
+
+    const config = getNavbarIconConfig(item);
+    if (!config) return;
+
+    item.innerHTML = getSiteIconInlineMarkup(config.icon, config.label);
+    item.setAttribute('aria-label', config.label);
+    item.setAttribute('title', config.label);
+    item.setAttribute('data-nav-icon-applied', 'true');
+  });
+}
+
+function getContextualButtonConfig(button) {
+  if (!button || button.hasAttribute('data-admin-icon')) {
+    return null;
+  }
+
+  const explicitIcon = button.getAttribute('data-site-icon');
+  const explicitLabel = button.getAttribute('data-site-label');
+  const text = button.textContent.trim();
+  const lowerText = text.toLowerCase();
+
+  if (explicitIcon) {
+    return {
+      icon: explicitIcon,
+      label: explicitLabel || button.getAttribute('aria-label') || button.getAttribute('title') || text || 'Action'
+    };
+  }
+
+  if (button.classList.contains('searchIcon')) {
+    return { icon: 'search', label: text || 'Search' };
+  }
+
+  if (button.classList.contains('heroButton')) {
+    return { icon: 'shop', label: text || 'Shop now' };
+  }
+
+  if (button.classList.contains('productButton')) {
+    return { icon: 'addToCart', label: text || 'Add to Cart' };
+  }
+
+  if (button.classList.contains('removeButton')) {
+    return { icon: 'trash', label: 'Remove' };
+  }
+
+  if (button.id === 'clearCart') {
+    return { icon: 'trash', label: 'Clear Cart' };
+  }
+
+  if (button.classList.contains('checkoutButton')) {
+    return { icon: 'checkout', label: text || 'Complete Purchase' };
+  }
+
+  if (button.classList.contains('cancelButton')) {
+    return { icon: 'cancel', label: text || 'Cancel' };
+  }
+
+  if (button.classList.contains('authButton')) {
+    if (lowerText.includes('sign up')) {
+      return { icon: 'signup', label: text || 'Sign up' };
+    }
+
+    return { icon: 'login', label: text || 'Login' };
+  }
+
+  if (button.classList.contains('accountButton')) {
+    if (lowerText.includes('login')) {
+      return { icon: 'login', label: text || 'Login' };
+    }
+
+    return { icon: 'signup', label: text || 'Sign up' };
+  }
+
+  if (button.classList.contains('logout-btn')) {
+    return { icon: 'logout', label: text || 'Logout' };
+  }
+
+  return null;
+}
+
+function applyContextualIcons(root = document) {
+  const scope = root && typeof root.querySelectorAll === 'function' ? root : document;
+  const buttons = scope.querySelectorAll('button');
+
+  buttons.forEach(button => {
+    const config = getContextualButtonConfig(button);
+    if (!config) return;
+
+    button.innerHTML = getSiteIconButtonMarkup(config.icon, config.label);
+    button.setAttribute('aria-label', config.label);
+    button.setAttribute('title', config.label);
+  });
+}
+
+window.getSiteIconMarkup = getSiteIconMarkup;
+window.getSiteIconButtonMarkup = getSiteIconButtonMarkup;
+window.applyNavbarIcons = applyNavbarIcons;
+window.applyContextualIcons = applyContextualIcons;
+
+// Toggle search bar on icon click
+if (searchToggle && searchInput) {
+  searchToggle.addEventListener('click', (e) => {
+    const isActive = searchInput.classList.toggle('active');
+    if (isActive) {
+      shiftNavLeft();
+      searchInput.focus();
+      window.addEventListener('resize', shiftNavLeft);
+    } else {
+      resetNav();
+      window.removeEventListener('resize', shiftNavLeft);
+    }
+    e.stopPropagation();
+  });
+}
 
 // Hide search bar when clicking outside
 document.addEventListener('click', (e) => {
+  if (!searchInput || !searchToggle) return;
+
   if (!searchInput.contains(e.target) && !searchToggle.contains(e.target)) {
     searchInput.classList.remove('active');
     resetNav();
@@ -26,22 +269,24 @@ document.addEventListener('click', (e) => {
 });
 
 // Search functionality for shop items
-searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  const productCards = document.querySelectorAll('.productCard');
-  
-  productCards.forEach(card => {
-    const productName = card.querySelector('h3');
-    if (productName) {
-      const name = productName.innerText.toLowerCase();
-      if (searchTerm === '' || name.includes(searchTerm)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const productCards = document.querySelectorAll('.productCard');
+    
+    productCards.forEach(card => {
+      const productName = card.querySelector('h3');
+      if (productName) {
+        const name = productName.innerText.toLowerCase();
+        if (searchTerm === '' || name.includes(searchTerm)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
       }
-    }
+    });
   });
-});
+}
 
 function shiftNavLeft() {
   if (!navLinks) return;
@@ -243,6 +488,8 @@ function randomizeHomeProducts() {
       }
     }
   });
+
+  applyContextualIcons(productsSection);
 }
 
 function hydrateExistingProductCards() {
@@ -259,6 +506,8 @@ function hydrateExistingProductCards() {
 
     imageElement.outerHTML = createProductImageMarkup(product);
   });
+
+  applyContextualIcons(document);
 }
 
 /* CART FUNCTIONS -------------------------------------------------------- */
@@ -317,7 +566,7 @@ function renderCart() {
     div.className = 'cartItem';
     div.innerHTML = `<span class="cartName">${item.name}</span>
                      <span class="cartPrice">${item.price}</span>
-                     <button class="removeButton" data-index="${index}">&times;</button>`;
+                     <button class="removeButton" data-index="${index}">Remove</button>`;
     cartContainer.appendChild(div);
     const priceVal = parseFloat(item.price.replace(/[^0-9\.]/g, '')) || 0;
     total += priceVal;
@@ -330,16 +579,16 @@ function renderCart() {
   // clear cart button
   const clearBtn = document.createElement('button');
   clearBtn.id = 'clearCart';
-  clearBtn.textContent = 'Clear Cart';
   clearBtn.addEventListener('click', () => {
     saveCart([]);
     renderCart();
   });
   cartContainer.appendChild(clearBtn);
+  applyContextualIcons(cartContainer);
   const removes = cartContainer.querySelectorAll('.removeButton');
   removes.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const idx = parseInt(e.target.dataset.index, 10);
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.index, 10);
       const current = getCart();
       current.splice(idx, 1);
       saveCart(current);
@@ -596,6 +845,7 @@ function renderShopProducts() {
 
   // Re-setup cart buttons after rendering
   setupShopCartButtons();
+  applyContextualIcons(productsContainer);
 }
 
 // Render products for a specific category
@@ -624,11 +874,14 @@ function renderCategoryProducts(categoryId) {
 
   // Re-setup cart buttons after rendering
   setupShopCartButtons();
+  applyContextualIcons(productsSection);
 }
 
 // initialize when document ready
 document.addEventListener('DOMContentLoaded', () => {
   initializeProducts(); // Initialize products first
+  applyNavbarIcons();
+  applyContextualIcons();
   randomizeHomeProducts();
   hydrateExistingProductCards();
   setupShopCartButtons();

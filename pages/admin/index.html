@@ -23,7 +23,7 @@
         <li><a href="../cart/index.html">Cart</a></li>
       </ul>
       <div class="searchContainer">
-        <button class="searchIcon" id="searchToggle">Search</button>
+        <button class="searchIcon icon-only-control" id="searchToggle" data-admin-icon="search" aria-label="Search products" title="Search products">Search</button>
         <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
       </div>
     </div>
@@ -39,8 +39,8 @@
           <h3>Product Management</h3>
           <p>Manage your product catalog</p>
           <div class="card-actions">
-            <button class="admin-btn" onclick="window.location.href='../shop/index.html'">Manage Products</button>
-            <button class="admin-btn primary" id="quickAddProduct">Quick Add Product</button>
+            <button class="admin-btn" onclick="window.location.href='../shop/index.html'" data-admin-icon="shop" aria-label="Manage products" title="Manage products">Manage Products</button>
+            <button class="admin-btn primary" id="quickAddProduct" data-admin-icon="add" aria-label="Quick add product" title="Quick add product">Quick Add Product</button>
           </div>
         </div>
 
@@ -48,7 +48,7 @@
           <h3>User Management</h3>
           <p>View and manage user accounts</p>
           <div class="card-actions">
-            <button class="admin-btn" id="viewUsersBtn" onclick="openUsersModal()">View Users</button>
+            <button class="admin-btn" id="viewUsersBtn" onclick="openUsersModal()" data-admin-icon="users" aria-label="View users" title="View users">View Users</button>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
           <h3>Order Management</h3>
           <p>View and process orders</p>
           <div class="card-actions">
-            <button class="admin-btn" id="viewOrders">View Orders</button>
+            <button class="admin-btn" id="viewOrders" data-admin-icon="orders" aria-label="View orders" title="View orders">View Orders</button>
           </div>
         </div>
 
@@ -64,7 +64,7 @@
           <h3>Analytics</h3>
           <p>View store statistics</p>
           <div class="card-actions">
-            <button class="admin-btn" id="viewAnalytics">View Analytics</button>
+            <button class="admin-btn" id="viewAnalytics" data-admin-icon="analytics" aria-label="View analytics" title="View analytics">View Analytics</button>
           </div>
         </div>
       </div>
@@ -72,21 +72,21 @@
       <div class="quick-access-section">
         <h2>Quick Access</h2>
         <div class="quick-actions">
-          <button class="quick-btn" onclick="window.location.href='../shop/index.html'">
-            <span class="quick-icon">SHOP</span>
-            <span>Shop Management</span>
+          <button class="quick-btn" onclick="window.location.href='../shop/index.html'" data-admin-icon="shop" aria-label="Shop management" title="Shop management">
+            <span class="quick-icon" aria-hidden="true"></span>
+            <span class="button-label">Shop management</span>
           </button>
-          <button class="quick-btn" onclick="openProductModal()">
-            <span class="quick-icon">ADD</span>
-            <span>Add Product</span>
+          <button class="quick-btn" onclick="openProductModal()" data-admin-icon="add" aria-label="Add product" title="Add product">
+            <span class="quick-icon" aria-hidden="true"></span>
+            <span class="button-label">Add product</span>
           </button>
-          <button class="quick-btn" onclick="openUsersModal()">
-            <span class="quick-icon">USER</span>
-            <span>View Users</span>
+          <button class="quick-btn" onclick="openUsersModal()" data-admin-icon="users" aria-label="View users" title="View users">
+            <span class="quick-icon" aria-hidden="true"></span>
+            <span class="button-label">View users</span>
           </button>
-          <button class="quick-btn" onclick="window.location.href='../../index.html'">
-            <span class="quick-icon">SITE</span>
-            <span>View Store</span>
+          <button class="quick-btn" onclick="window.location.href='../../index.html'" data-admin-icon="site" aria-label="View store" title="View store">
+            <span class="quick-icon" aria-hidden="true"></span>
+            <span class="button-label">View store</span>
           </button>
         </div>
       </div>
@@ -124,7 +124,7 @@
 
   <div id="adminModal" class="admin-modal" style="display: none;">
     <div class="admin-modal-content">
-      <span class="admin-modal-close">&times;</span>
+      <span class="admin-modal-close icon-only-control" data-admin-icon="close" aria-label="Close modal" title="Close modal" role="button" tabindex="0"></span>
       <h3>Quick Add Product</h3>
       <form id="productForm">
         <input type="text" id="productName" placeholder="Product Name" required>
@@ -139,14 +139,14 @@
         </select>
         <input type="text" id="productPrice" placeholder="Price (e.g. $29.99)" required>
         <input type="text" id="productImage" placeholder="Image filename (e.g. midnight_jacket.jpg)" required>
-        <button type="submit" class="admin-btn">Add Product</button>
+        <button type="submit" class="admin-btn" data-admin-icon="add" aria-label="Add product" title="Add product">Add Product</button>
       </form>
     </div>
   </div>
 
   <div id="usersModal" class="admin-modal" style="display: none;">
     <div class="admin-modal-content large">
-      <span class="admin-modal-close">&times;</span>
+      <span class="admin-modal-close icon-only-control" data-admin-icon="close" aria-label="Close modal" title="Close modal" role="button" tabindex="0"></span>
       <h3>User Management</h3>
       <div class="users-list" id="usersList">
         <!-- Users will be loaded here -->
