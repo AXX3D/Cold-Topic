@@ -1,6 +1,9 @@
 const searchToggle = document.getElementById('searchToggle');
 const searchInput = document.getElementById('searchInput');
 const navLinks = document.querySelector('.navLinks');
+const navbar = document.querySelector('.navbar');
+const mobileNavMediaQuery = window.matchMedia('(max-width: 640px)');
+let navMenuToggle = null;
 
 function getSiteIconMarkup(iconName) {
   const icons = {
@@ -99,6 +102,17 @@ function getSiteIconButtonMarkup(iconName, label) {
 
 function getSiteIconInlineMarkup(iconName, label) {
   return `${getSiteIconMarkup(iconName).replace('class="btn-icon"', 'class="btn-icon nav-icon"')}<span class="button-label">${label}</span>`;
+}
+
+function getNavMenuToggleMarkup(label) {
+  return `
+    <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 7h16"></path>
+      <path d="M4 12h16"></path>
+      <path d="M4 17h16"></path>
+    </svg>
+    <span class="button-label">${label}</span>
+  `;
 }
 
 function getNavbarIconConfig(element) {
@@ -241,11 +255,87 @@ window.getSiteIconButtonMarkup = getSiteIconButtonMarkup;
 window.applyNavbarIcons = applyNavbarIcons;
 window.applyContextualIcons = applyContextualIcons;
 
+function isMobileNavViewport() {
+  return mobileNavMediaQuery.matches;
+}
+
+function updateMobileNavToggleLabel() {
+  if (!navMenuToggle || !navbar) return;
+
+  const isOpen = navbar.classList.contains('nav-open');
+  const label = isOpen ? 'Close' : 'Menu';
+  navMenuToggle.innerHTML = getNavMenuToggleMarkup(label);
+  navMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  navMenuToggle.setAttribute('aria-expanded', String(isOpen));
+  navMenuToggle.setAttribute('title', label);
+}
+
+function closeMobileNav() {
+  if (!navbar) return;
+
+  navbar.classList.remove('nav-open');
+  updateMobileNavToggleLabel();
+
+  if (searchInput) {
+    searchInput.classList.remove('active');
+  }
+
+  resetNav();
+}
+
+function initializeMobileNavbar() {
+  if (!navbar) return;
+
+  navMenuToggle = navbar.querySelector('.navMenuToggle');
+
+  if (!navMenuToggle) {
+    navMenuToggle = document.createElement('button');
+    navMenuToggle.type = 'button';
+    navMenuToggle.className = 'navMenuToggle';
+    navMenuToggle.setAttribute('data-nav-menu-toggle', 'true');
+
+    const navLeft = navbar.querySelector('.navLeft');
+    if (navLeft && navLeft.nextSibling) {
+      navbar.insertBefore(navMenuToggle, navLeft.nextSibling);
+    } else {
+      navbar.appendChild(navMenuToggle);
+    }
+  }
+
+  updateMobileNavToggleLabel();
+
+  navMenuToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    navbar.classList.toggle('nav-open');
+    updateMobileNavToggleLabel();
+
+    if (!navbar.classList.contains('nav-open') && searchInput) {
+      searchInput.classList.remove('active');
+      resetNav();
+    }
+  });
+
+  const closeTriggers = navbar.querySelectorAll('.navLinks a, .navRight li a, .accountButton, .auth-elements a, .auth-elements button');
+  closeTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      if (isMobileNavViewport()) {
+        closeMobileNav();
+      }
+    });
+  });
+
+  mobileNavMediaQuery.addEventListener('change', (event) => {
+    if (!event.matches) {
+      closeMobileNav();
+    }
+  });
+}
+
 // Toggle search bar on icon click
 if (searchToggle && searchInput) {
   searchToggle.addEventListener('click', (e) => {
     const isActive = searchInput.classList.toggle('active');
-    if (isActive) {
+    if (isActive && !isMobileNavViewport()) {
       shiftNavLeft();
       searchInput.focus();
       window.addEventListener('resize', shiftNavLeft);
@@ -253,12 +343,21 @@ if (searchToggle && searchInput) {
       resetNav();
       window.removeEventListener('resize', shiftNavLeft);
     }
+
+    if (isActive) {
+      searchInput.focus();
+    }
+
     e.stopPropagation();
   });
 }
 
 // Hide search bar when clicking outside
 document.addEventListener('click', (e) => {
+  if (navbar && isMobileNavViewport() && navbar.classList.contains('nav-open') && !navbar.contains(e.target)) {
+    closeMobileNav();
+  }
+
   if (!searchInput || !searchToggle) return;
 
   if (!searchInput.contains(e.target) && !searchToggle.contains(e.target)) {
@@ -289,7 +388,7 @@ if (searchInput) {
 }
 
 function shiftNavLeft() {
-  if (!navLinks) return;
+  if (!navLinks || !searchInput || isMobileNavViewport()) return;
   // shift nav links further left when search is active
   const shift = searchInput.offsetWidth + 120;
   navLinks.style.transition = 'transform 0.3s ease';
@@ -301,6 +400,8 @@ function resetNav() {
   navLinks.style.transform = '';
   navLinks.style.transition = '';
 }
+
+initializeMobileNavbar();
 
 /* PRODUCT DATA -------------------------------------------------------- */
 

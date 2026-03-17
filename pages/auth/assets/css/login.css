@@ -33,6 +33,7 @@ body {
   top: 0;
   z-index: 10;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
@@ -49,6 +50,25 @@ body {
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+.navMenuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 2.85rem;
+  min-height: 2.85rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #285b92;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .logo a {
@@ -302,11 +322,61 @@ body {
 
 @media (max-width: 640px) {
   .navbar {
-    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    align-items: center;
   }
 
   .navLeft,
-  .navRight,
+  .navRight {
+    width: 100%;
+  }
+
+  .navMenuToggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .navRight {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding: 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow);
+  }
+
+  .navbar.nav-open .navRight {
+    display: flex;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+  }
+
+  .navLinks {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .navLinks li,
+  .navRight li {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .navLinks a,
+  .navRight li a,
+  .searchIcon,
+  .accountButton {
+    width: 100%;
+    justify-content: flex-start;
+    height: auto;
+    padding: 0.8rem 1rem;
+  }
+
   .searchContainer,
   .searchBar.active,
   .accountButton {
